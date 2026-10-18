@@ -20,7 +20,7 @@
         <testcontainers.version>1.19.6</testcontainers.version>
         <springdoc.version>2.3.0</springdoc.version>
         <jjwt.version>0.12.5</jjwt.version>
-        <jacoco.version>0.8.11</jacoco.version>
+        <jacoco.version>0.8.15</jacoco.version>
     </properties>
 
     <dependencies>
