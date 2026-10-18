@@ -1,0 +1,3 @@
+security:
+  jwt:
+    secret-key: dGVzdC1vbmx5LXNlY3JldC1rZXktZm9yLWp3dC10ZXN0cy0zMmJ5dGVz

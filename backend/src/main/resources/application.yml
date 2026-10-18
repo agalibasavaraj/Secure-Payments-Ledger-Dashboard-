@@ -1,0 +1,69 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: secure-payments-ledger
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/ledger_db}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+# Security & JWT Configuration
+security:
+  jwt:
+    # A Base64-encoded 256-bit secret must be provided outside source control.
+    secret-key: ${JWT_SECRET_KEY}
+    expiration-minutes: 15
+  lockout:
+    max-failed-attempts: 5
+    lockout-duration-minutes: 5
+
+app:
+  cors:
+    allowed-origin-patterns: ${APP_CORS_ALLOWED_ORIGIN_PATTERNS:http://localhost:3000,http://127.0.0.1:3000}
+
+# Configurable Rule-based Fraud Engine Thresholds
+fraud:
+  rules:
+    high-amount:
+      threshold-minor: 5000000 # ₹50,000 (5M paise) -> FLAGGED
+    velocity:
+      max-transfers-per-window: 5 # > 5 transfers in 60s -> BLOCKED (403)
+      window-seconds: 60
+    unusual-amount:
+      multiplier: 5.0 # > 5x average of last 10 transfers -> FLAGGED
+      min-history-count: 3
+    new-wallet:
+      max-age-hours: 24 # Wallet created < 24h ago sending > threshold -> FLAGGED
+      threshold-minor: 2000000 # ₹20,000
+
+# Actuator metrics and health
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# Swagger & OpenAPI 3.0
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

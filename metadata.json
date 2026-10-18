@@ -1,0 +1,6 @@
+{
+  "name": "Secure Payments Ledger",
+  "description": "A web dashboard for managing demo wallets, idempotent transfers, real-time transaction ledger, fraud detection, and admin analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
