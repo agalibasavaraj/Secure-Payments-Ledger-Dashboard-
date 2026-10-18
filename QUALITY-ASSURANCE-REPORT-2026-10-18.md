@@ -82,7 +82,7 @@ No claim of overall security is made. The previously identified code-level findi
 4. Add the missing QA-platform pages and genuine workflows only after reconciling the current app scope and real API contracts. Do not substitute mock functionality for required live API behavior.
 5. Add Locust workloads and explicit thresholds, run them against an isolated environment, and record actual measurements.
 6. Verify live-backend browser flows, all required pages, accessibility, and responsive behavior; the current browser check covered only fictional demo Dashboard at a narrow viewport.
-7. Refresh `bun.lock` before using Bun with the changed manifest, or formally standardize on npm. Full Git diff review/commit is not possible from the current project directory because the parent Git root is `C:\Users\agali` and the entire project directory is untracked.
+7. Refresh `bun.lock` before using Bun with the changed manifest, or formally standardize on npm. The project was pushed to GitHub; continue to review future diffs before committing.
 
 ## H. Reproducibility
 
@@ -101,6 +101,6 @@ The frontend is available at `http://localhost:3000`. Backend verification requi
 ## I. Final integrity check
 
 - Backup before current fixes: `C:\Users\agali\.copilot\session-state\53ef2c47-f762-42a9-9f0d-a69bc3cb4046\files\secure-payments-ledger-before-fixes-20261018-135418.zip`; verified readable/listable with 100 files. `node_modules/` excluded.
-- Git root/branch: `C:\Users\agali`, `master`. The project directory is untracked; `node_modules/` is ignored. An existing ZIP was compared: all 94 archive entries matched workspace source hashes; the four workspace-only files were the generated `dist/` outputs and `.vscode/tasks.json`.
+- Git root: `C:\Users\agali\Downloads\secure-payments-ledger`. Initial commit `eeedd0ffa3c1b8744193d4e49918aac0ffbb27bd` was pushed to the public repository [Secure-Payments-Ledger-Dashboard-](https://github.com/agalibasavaraj/Secure-Payments-Ledger-Dashboard-), on remote branch `main`; local `master` tracks `origin/main`. `node_modules/` and `dist/` are ignored.
 - Source files changed/added include frontend dependencies and regression tests; backend authentication, wallet ownership, transfer persistence, exception handling, CORS, required secrets, Docker, and regression tests; CI; [README.md](./README.md); and this report.
-- No source files deleted; no commits, pushes, deployments, database resets, or migrations performed. `bun.lock` was not modified.
+- No source files deleted; no deployments, database resets, or migrations performed. `bun.lock` was not modified.
